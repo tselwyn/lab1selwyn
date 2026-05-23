@@ -1,20 +1,28 @@
-// Selwynlab1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_primitives.h>
 
-#include <iostream>
+int main() {
+    al_init();
+    al_init_primitives_addon();
+    ALLEGRO_DISPLAY* display = al_create_display(640, 480);
 
-int main()
-{
-    std::cout << "Hello World!\n";
+    // Sky background
+    al_clear_to_color(al_map_rgb(135, 206, 235));
+
+    // House body - rectangle
+    al_draw_filled_rectangle(200, 200, 450, 400, al_map_rgb(139, 69, 19));
+
+    // Roof - triangle
+    al_draw_filled_triangle(180, 200, 470, 200, 325, 100, al_map_rgb(178, 34, 34));
+
+    // Door - rectangle
+    al_draw_filled_rectangle(290, 300, 360, 400, al_map_rgb(85, 45, 10));
+
+    // Sun - circle
+    al_draw_filled_circle(550, 80, 50, al_map_rgb(255, 255, 0));
+
+    al_flip_display();
+    al_rest(5.0);
+    al_destroy_display(display);
+    return 0;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
